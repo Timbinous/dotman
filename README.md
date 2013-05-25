@@ -1,24 +1,8 @@
 # Dotman
 
-TODO: Write a gem description
+This is a work in progress.  It is not yet in working condition.
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'dotman'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install dotman
-
-## Usage
-
-TODO: Write usage instructions here
+This gem will allow you to switch between different dotfiles on the same user account.
 
 ## Contributing
 
