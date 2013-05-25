@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Dotman::VERSION
   spec.authors       = ["Tim"]
   spec.email         = ["timbinous@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Dotfiles Manager}
+  spec.summary       = %q{Use this utility to manage your dotfiles and others who may use the same login user as yourself}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
 end
