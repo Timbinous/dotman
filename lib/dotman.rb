@@ -1,6 +1,6 @@
-require "dotman/version"
 require 'fileutils'
-require 'git'
+require "dotman/version"
+require "dotman/git"
 module Dotman
   def self.ensure_dotman_folder_exists
     unless File.directory?("#{ENV['HOME']}/.dotman")

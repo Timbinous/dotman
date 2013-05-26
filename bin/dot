@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+$LOAD_PATH << File.expand_path('../../lib', __FILE__)
+
+require 'rubygems'
+require 'dotman'
+
+case ARGV.first
+when 'clone'
+  Dotman.ensure_dotman_folder_exists
+  Dotman::Git.klone(ARGV[1])
+end
