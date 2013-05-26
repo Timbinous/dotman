@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe Dotman do
-  context "dotman folder doesn't exist on the folder" do
+  context "when .dotman folder doesn't exist in the home directory" do
     before :all do
       FileUtils.rm_rf("#{ENV['HOME']}/.dotman")
     end

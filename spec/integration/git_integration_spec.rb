@@ -3,7 +3,7 @@
 #
 #
 require 'spec_helper'
-describe Git do
+describe Dotman::Git do
   before :all do
     Dotman.ensure_dotman_folder_exists
     FileUtils.rm_rf("#{ENV['HOME']}/.dotman/Timbinous_dotfiles")
@@ -14,7 +14,7 @@ describe Git do
     end
     it "clones to the $HOME/.dotman folder" do
       expect {
-      Git.clone_repository("git@github.com:Timbinous/dotfiles.git") }.
+      Dotman::Git.clone_repository("git@github.com:Timbinous/dotfiles.git") }.
       to change { File.directory?("#{ENV['HOME']}/.dotman/Timbinous_dotfiles") }.to true
     end
   end
