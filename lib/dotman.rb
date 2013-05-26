@@ -1,4 +1,5 @@
 require "dotman/version"
+require 'fileutils'
 require 'git'
 module Dotman
   def self.ensure_dotman_folder_exists
