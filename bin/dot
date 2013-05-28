@@ -7,5 +7,5 @@ require 'dotman'
 case ARGV.first
 when 'clone'
   Dotman::Base.ensure_dotman_folder_exists
-  Dotman::Git.klone(ARGV[1])
+  Dotman::Git.klone(ARGV[1], ARGV[2])
 end
