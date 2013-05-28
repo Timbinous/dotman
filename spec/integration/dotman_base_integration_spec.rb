@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe Dotman do
+describe Dotman::Base do
   context "when .dotman folder doesn't exist in the home directory" do
     before :all do
       FileUtils.rm_rf("#{ENV['HOME']}/.dotman")
@@ -7,7 +7,7 @@ describe Dotman do
 
     it "creates a new folder" do
       File.directory?("#{ENV['HOME']}/.dotman").should == false
-      Dotman.ensure_dotman_folder_exists
+      Dotman::Base.ensure_dotman_folder_exists
       File.directory?("#{ENV['HOME']}/.dotman").should == true
     end
 
