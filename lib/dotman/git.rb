@@ -11,10 +11,11 @@ module Dotman
     end
 
     def self.clone_repository(git_location, alias_name = nil)
-      if (File.directory?("#{ENV['HOME']}/.dotman/#{folder_name(git_location)}"))
+      dotfile_location = "#{ENV['HOME']}/.dotman/#{folder_name(git_location)}"
+      if (File.directory?(dotfile_location))
         STDOUT.puts("Dotfiles were already cloned")
       else
-        system "git clone #{git_location} #{ENV['HOME']}/.dotman/#{folder_name(git_location)}"
+        system "git clone #{git_location} #{dotfile_location}"
         Dotman::DotfileCollection.new_configuration(folder_name(git_location), alias_name)
       end
     end
