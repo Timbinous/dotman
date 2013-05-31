@@ -32,9 +32,5 @@ module Dotman
         end
       end
     end
-ensure_dotman_folder_exists
-ensure_default_folder_exists
-ensure_current_dotman_file_exists
-
   end
 end

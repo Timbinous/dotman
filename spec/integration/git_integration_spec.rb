@@ -4,9 +4,6 @@
 #
 require 'spec_helper'
 describe Dotman::Git do
-  before :all do
-    Dotman::Base.ensure_dotman_folder_exists
-  end
 
   context "cloning a new repo" do
 

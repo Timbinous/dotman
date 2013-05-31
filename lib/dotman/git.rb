@@ -2,6 +2,9 @@ module Dotman
   class Git
     def self.klone(git_location, alias_name = nil)
       unless git_location.nil?
+        Dotman::Base.ensure_dotman_folder_exists
+        Dotman::Base.ensure_default_folder_exists
+        Dotman::Base.ensure_current_dotman_file_exists
         clone_repository(git_location, alias_name)
       end
     end
