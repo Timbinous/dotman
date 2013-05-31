@@ -18,7 +18,7 @@ module Dotman
 
     def self.move_default_back_to_home
       $default_user.collection.all_dotfiles.each do |file|
-        FileUtils.mv(file, ENV['HOME'] )
+        FileUtils.mv(Dotman::Base.default_folder + '/' + file, ENV['HOME'] )
       end
     end
 
