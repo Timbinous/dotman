@@ -34,7 +34,7 @@ DOTFILES_YAML = File.exist?(DOTFILES_PATH) ? YAML::load_file(DOTFILES_PATH) : Ha
     private
 
     def self.ensure_default_dotfile_configuration_exists
-      unless DOTFILES_YAML['default']
+      unless DOTFILES_YAML && DOTFILES_YAML['default']
         new_configuration('default')
       end
     end
