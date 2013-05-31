@@ -7,4 +7,11 @@ describe Dotman::DotfileCollection do
       end
     end
   end
+
+  describe "#all_dotfiles" do
+    let (:dotfile_collection)      { Dotman::DotfileCollection.new }
+    it 'excludes .git' do
+      dotfile_collection.all_dotfiles.should_not include('.git')
+    end
+  end
 end
