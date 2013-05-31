@@ -5,30 +5,28 @@ DOTFILES_YAML = File.exist?(DOTFILES_PATH) ? YAML::load_file(DOTFILES_PATH) : Ha
 
   class DotfileCollection
 
+    def initialize(yaml)
+      @yaml = yaml
+    end
+
     attr_accessor :yaml
 
     def self.find_by_alias(alias_name)
-      dotfile_collection = new
       ensure_default_dotfile_configuration_exists
-      dotfile_collection.yaml = DOTFILES_YAML.fetch(alias_name) if DOTFILES_YAML
-      dotfile_collection
+      new(DOTFILES_YAML.fetch(alias_name))
     end
 
     def self.new_configuration(folder_name, alias_name = nil)
-      dotfile_collection = new
       alias_name = folder_name unless alias_name
       DOTFILES_YAML.store(alias_name, {
           'folder_name' => folder_name 
-        }
-      )
+        })
       save_dotfile_yaml
-      dotfile_collection.yaml = DOTFILES_YAML
-      dotfile_collection
     end
 
 
     def all_dotfiles
-      Dir.entries("#{Dotman::Base.dotman_folder}/#{@yaml['folder_name']}").select{|x| x =~ /\.{1}\w+/ }
+      Dir.entries("#{Dotman::Base.dotman_folder}/#{@yaml['folder_name']}").select{|x| x =~ /\.{1}\w+[^git]/ }
     end
 
     private
