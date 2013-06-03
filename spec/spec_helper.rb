@@ -1,14 +1,6 @@
 ENV['HOME'] = File.expand_path('../data/home', __FILE__)
 require 'fileutils'
-require_relative "../lib/dotman/version"
-require_relative "../lib/dotman/base"
-Dotman::Base.ensure_dotman_folder_exists
-Dotman::Base.ensure_default_folder_exists
-Dotman::Base.ensure_current_dotman_file_exists
-require_relative "../lib/dotman/git"
-require_relative "../lib/dotman/dotfile_collection"
-require_relative "../lib/dotman/user"
-
+require_relative "../lib/dotman"
 
 RSpec.configure do |config|
 
