@@ -1,8 +1,33 @@
 # Dotman
 
-This is a work in progress.  It is not yet in working condition.
+This is a work in progress.
 
-This gem will allow you to switch between different dotfiles on the same user account.
+This gem will allows you to switch between different dotfiles on the same user account.
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'dotman'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install dotman
+
+## Usage
+
+To retrieve your dotfiles and store them
+dot clone your\_dotfiles\_repo alias
+
+To use cloned dotfiles
+dot use alias
+
+To revert dotfiles back to original
+dot use default
 
 ## Contributing
 
