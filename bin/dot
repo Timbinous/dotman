@@ -10,6 +10,9 @@ when 'clone'
   Dotman::Git.klone(ARGV[1], ARGV[2])
 when 'use'
   Dotman::User.set(ARGV[1])
+when 'collect'
+  puts "collecting..."
+  Dotman::Collect.new
 else
   puts "USAGE:\ndot clone git_repository alias : clone the dotfiles repo\ndot use alias : use the dotfiles\ndot use default : switch to the default dot files"
 end

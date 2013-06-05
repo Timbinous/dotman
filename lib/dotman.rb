@@ -7,3 +7,4 @@ Dotman::Base.ensure_current_dotman_file_exists
 require "dotman/git"
 require "dotman/dotfile_collection"
 require "dotman/user"
+require "dotman/collect"
