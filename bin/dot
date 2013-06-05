@@ -11,8 +11,11 @@ when 'clone'
 when 'use'
   Dotman::User.set(ARGV[1])
 when 'collect'
-  puts "collecting..."
-  Dotman::Collect.new
+  Dotman::Collect.new.create_dotman
 else
-  puts "USAGE:\ndot clone git_repository alias : clone the dotfiles repo\ndot use alias : use the dotfiles\ndot use default : switch to the default dot files"
+  puts "USAGE:\n
+    dot clone git_repository alias : clone the dotfiles repo\n
+    dot use alias : use the dotfiles\n
+    dot use default : switch to the default dot files\n
+    dot collect : collects all dot files within a directory called dotfiles"
 end
