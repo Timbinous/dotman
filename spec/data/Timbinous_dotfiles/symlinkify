@@ -1,0 +1,58 @@
+#!/bin/bash
+############################
+# .make.sh
+# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+############################
+
+########## Variables
+
+olddir=~/.dotfiles_old             # old dotfiles backup directory
+files=".bashrc .vimrc .vim .zshrc .tmux.conf .oh-my-zsh"    # list of files/folders to symlink in homedir
+bundle=`pwd`/.vim/bundle
+
+##########
+
+# clone my pathogen vim goodies
+if [ ! -e $bundle/Command-T ]; then
+  git clone git@github.com:wincent/Command-T.git $bundle/Command-T/
+fi
+
+if [ ! -e $bundle/ack.vim ]; then
+  git clone git@github.com:mileszs/ack.vim.git $bundle/ack.vim/
+fi
+
+if [ ! -e $bundle/tcomment_vim ]; then
+  git clone git@github.com:tomtom/tcomment_vim.git $bundle/tcomment_vim/
+fi
+
+if [ ! -e $bundle/vim-fugitive ]; then
+  git clone git@github.com:tpope/vim-fugitive.git $bundle/vim-fugitive/
+fi
+
+if [ ! -e $bundle/vim-rails ]; then
+  git clone git@github.com:tpope/vim-rails.git $bundle/vim-rails/
+fi
+
+if [ ! -e $bundle/vim-ruby ]; then
+  git clone git@github.com:vim-ruby/vim-ruby.git $bundle/vim-ruby/
+fi
+
+# if [ ! -e $bundle/vim-ruby-debugger ]; then
+  # git clone git@github.com:astashov/vim-ruby-debugger.git $bundle/vim-ruby-debugger/
+# fi
+
+mkdir -p $olddir
+
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+for file in $files; do
+  if [ -h ~/$file ]
+  then
+    rm ~/$file
+  elif [ -e ~/$file ]
+  then
+    echo "Moving any existing dotfiles from ~ to $olddir"
+    mv ~/$file $olddir/$file
+  fi
+  echo "Creating symlink to $file in home directory."
+  ln -s `pwd`/$file ~/$file
+done

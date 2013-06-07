@@ -4,7 +4,15 @@ require_relative "../lib/dotman"
 
 RSpec.configure do |config|
 
-  config.after(:all) do
+  config.before(:each) do
+    Dotman::Git.stub(:system) do |arg|
+      if arg == "git clone git@github.com:Timbinous/dotfiles.git /home/tim/source/dotman/spec/data/home/.dotman/Timbinous_dotfiles"
+        FileUtils.cp_r(File.expand_path('../data/Timbinous_dotfiles', __FILE__), File.join(ENV['HOME'], '.dotman'))
+      end
+    end
+  end
+
+  config.after(:each) do
     FileUtils.rm_rf(File.join(ENV['HOME'], '.dotman')) if File.directory? (File.join(ENV['HOME'], '.dotman'))
     FileUtils.rm(File.join(ENV['HOME'], '.bashrc')) if File.symlink? (File.join(ENV['HOME'], '.bashrc'))
     FileUtils.rm(File.join(ENV['HOME'], '.gitignore')) if File.symlink? (File.join(ENV['HOME'], '.gitignore'))

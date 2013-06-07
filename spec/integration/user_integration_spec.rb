@@ -2,12 +2,9 @@ require 'spec_helper'
 describe Dotman::User do
   let (:tim)                 { Dotman::User.new('tim') }
 
-  before :all do
-    Dotman::Git.clone_repository("git@github.com:Timbinous/dotfiles.git", 'tim')
-  end
-
   describe ".current_user_alias" do
     before :all do
+      Dotman::Base.ensure_dotman_folder_exists
       File.open(Dotman::Base.current_dotman, 'w') { |f| f.write 'tim' }
     end
 
@@ -17,6 +14,10 @@ describe Dotman::User do
   end
 
   describe "#set_current_user" do
+    before :each do
+      Dotman::Base.ensure_dotman_folder_exists
+      Dotman::Git.clone_repository("git@github.com:Timbinous/dotfiles.git", 'tim')
+    end
 
     it 'writes to the .current file, the alias of the current user' do
       tim.set_current_user
@@ -26,6 +27,10 @@ describe Dotman::User do
 
 
   describe ".current" do
+    before :each do
+      Dotman::Base.ensure_dotman_folder_exists
+      Dotman::Git.clone_repository("git@github.com:Timbinous/dotfiles.git", 'tim')
+    end
 
     it 'returns the current users information' do
       tim.set_current_user
@@ -35,7 +40,9 @@ describe Dotman::User do
 
   describe "#set" do
 
-    before :all do
+    before :each do
+      Dotman::Base.ensure_dotman_folder_exists
+      Dotman::Git.clone_repository("git@github.com:Timbinous/dotfiles.git", 'tim')
       $default_user.set_current_user
       FileUtils.touch(["#{ENV['HOME']}/.vimrc", "#{ENV['HOME']}/.zshrc", "#{ENV['HOME']}/.bashrc"])
       FileUtils.mkdir("#{ENV['HOME']}/.dotman/default")

@@ -5,6 +5,12 @@
 require 'spec_helper'
 describe Dotman::Git do
 
+  before :each do
+    Dotman::Base.ensure_dotman_folder_exists
+    Dotman::Base.ensure_default_folder_exists
+    Dotman::Base.ensure_current_dotman_file_exists
+  end
+
   context "cloning a new repo" do
 
     let (:git_dotfile_repo_path)    { "git@github.com:Timbinous/dotfiles.git" }
@@ -22,11 +28,6 @@ describe Dotman::Git do
         Dotman::DotfileCollection.find_by_alias(git_folder_name).should_not be_false
       end
 
-      after :all do
-        FileUtils.rm_r("#{ENV['HOME']}/.dotman/dotfiles.yml")
-        FileUtils.rm_rf("#{ENV['HOME']}/.dotman/Timbinous_dotfiles")
-      end
-
     end
 
     context "when alias was passed" do
@@ -39,11 +40,6 @@ describe Dotman::Git do
 
       it "sets the yaml configuration" do
         Dotman::DotfileCollection.find_by_alias('tim').should_not be_false
-      end
-
-      after :all do
-        FileUtils.rm_r("#{ENV['HOME']}/.dotman/dotfiles.yml")
-        FileUtils.rm_rf("#{ENV['HOME']}/.dotman/Timbinous_dotfiles")
       end
 
     end
