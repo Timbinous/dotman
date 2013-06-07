@@ -29,6 +29,7 @@ describe Dotman::Collect do
   context '#collect_dotfiles' do
 
     it 'should call copy_over_dot for each dotfile in pwd' do
+      Dir.stub(:entries).and_return(['test1', 'test2', 'test3'])
       collect.should_receive(:copy_over_dot).exactly(3).times
       collect.collect_dotfiles
     end
