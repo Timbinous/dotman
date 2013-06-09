@@ -21,7 +21,7 @@ Or install it yourself as:
 
 To retrieve your dotfiles and store them:
 
-    dot clone <git repository> <alias> : clone the dotfiles repo
+    dot clone <git repository> <alias>
 
 To use cloned dotfiles:
 
@@ -30,7 +30,9 @@ To use cloned dotfiles:
 To list currently downloaded dotfiles:
 
     dot alias list
+
 or
+
     dot list 
 
 To revert dotfiles back to original:
