@@ -26,7 +26,15 @@ DOTFILES_PATH = "#{ENV['HOME']}/.dotman/dotfiles.yml"
         })
       save_dotfile_yaml
     end
+    
+    def self.all_aliases
+      ensure_default_dotfile_configuration_exists
+      dotfiles_yaml.collect {|dfy| dfy.first }
+    end
 
+    def self.show_all_aliases
+      STDOUT.puts all_aliases.join("\n")
+    end
 
     def all_dotfiles
       Dir.entries("#{Dotman::Base.dotman_folder}/#{@yaml['folder_name']}").select{|x| x =~ /\.{1}\w+[^git]/ }

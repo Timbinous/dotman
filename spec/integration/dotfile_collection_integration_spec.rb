@@ -15,4 +15,21 @@ describe Dotman::DotfileCollection do
       end
     end
   end
+
+  describe ".all_aliases" do
+    context "when an alias exists in the collection" do
+      it "lists the alias" do
+        Dotman::DotfileCollection.all_aliases.should include('tim')
+      end
+    end
+  end
+
+  describe ".show_all_aliases" do
+    context "when aliases exist in the collection" do
+      it "shows all the aliases" do
+        STDOUT.should_receive(:puts).with("default\ntim")
+        Dotman::DotfileCollection.show_all_aliases
+      end
+    end
+  end
 end
