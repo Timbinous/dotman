@@ -2,7 +2,7 @@
 
 This is a work in progress.
 
-This gem will allows you to switch between different dotfiles on the same user account.
+This gem will allow you to switch between different dotfiles on the same user account.
 
 ## Installation
 
@@ -17,17 +17,36 @@ And then execute:
 Or install it yourself as:
 
     $ gem install dotman
-
 ## Usage
 
-To retrieve your dotfiles and store them
-dot clone your\_dotfiles\_repo alias
+To retrieve your dotfiles and store them:
 
-To use cloned dotfiles
-dot use alias
+    dot clone <git repository> <alias> : clone the dotfiles repo
 
-To revert dotfiles back to original
-dot use default
+To use cloned dotfiles:
+
+    dot use <alias> 
+
+To list currently downloaded dotfiles:
+
+    dot alias list
+
+or
+
+    dot list 
+
+To revert dotfiles back to original:
+
+    dot use default 
+
+To create a new dotfiles directory with all current dotfiles located in the HOME directory:
+
+    dot collect : collects all dot files within a directory called dotfiles
+
+To change the alias name:
+
+    dot alias change <old alias> <new alias> : changes alias from old to new
+
 
 ## Contributing
 
