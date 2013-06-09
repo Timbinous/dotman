@@ -30,9 +30,7 @@ To use cloned dotfiles:
 To list currently downloaded dotfiles:
 
     dot alias list
-
 or
-
     dot list 
 
 To revert dotfiles back to original:
@@ -41,11 +39,11 @@ To revert dotfiles back to original:
 
 To create a new dotfiles directory with all current dotfiles located in the HOME directory:
 
-    dot collect : collects all dot files within a directory called dotfiles
+    dot collect
 
 To change the alias name:
 
-    dot alias change <old alias> <new alias> : changes alias from old to new
+    dot alias change <old alias> <new alias> 
 
 
 ## Contributing
