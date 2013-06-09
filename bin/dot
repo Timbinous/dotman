@@ -19,6 +19,6 @@ else
     dot clone git_repository alias : clone the dotfiles repo\n
     dot use alias : use the dotfiles\n
     dot use default : switch to the default dot files\n
-    dot collect : collects all dot files within a directory called dotfiles
+    dot collect : collects all dot files within a directory called dotfiles\n
     dot list : lists all downloaded dotfile aliases"
 end
