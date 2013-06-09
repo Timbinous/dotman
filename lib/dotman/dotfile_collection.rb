@@ -36,6 +36,15 @@ DOTFILES_PATH = "#{ENV['HOME']}/.dotman/dotfiles.yml"
       STDOUT.puts all_aliases.join("\n")
     end
 
+    def self.change_alias(old_alias, new_alias)
+      dotfiles_yaml[new_alias] = dotfiles_yaml[old_alias]
+      dotfiles_yaml.delete(old_alias)
+      if Dotman::User.current_user_alias == old_alias
+        Dotman::User.set_current_user(new_alias)
+      end
+      save_dotfile_yaml
+    end
+
     def all_dotfiles
       Dir.entries("#{Dotman::Base.dotman_folder}/#{@yaml['folder_name']}").select{|x| x =~ /\.{1}\w+[^git]/ }
     end

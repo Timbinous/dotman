@@ -57,6 +57,12 @@ module Dotman
       end
     end
 
+    def self.set_current_user(alias_name)
+      File.open(Dotman::Base.current_dotman, 'w') do |f|
+        f.write(alias_name)
+      end
+    end
+
 
     def self.current_user_alias
       File.open(Dotman::Base.current_dotman).read.strip

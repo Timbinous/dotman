@@ -32,4 +32,38 @@ describe Dotman::DotfileCollection do
       end
     end
   end
+
+  describe ".change_alias" do
+    context "when alias exists" do
+      it "adds the alias to the desired new alias name" do
+        Dotman::Base.ensure_current_dotman_file_exists
+        Dotman::DotfileCollection.change_alias('tim', 'frank')
+        YAML::load_file("#{ENV['HOME']}/.dotman/dotfiles.yml").should include('frank')
+      end
+
+      it 'removes the old alias from the yaml file' do
+        Dotman::Base.ensure_current_dotman_file_exists
+        Dotman::DotfileCollection.change_alias('tim', 'frank')
+        YAML::load_file("#{ENV['HOME']}/.dotman/dotfiles.yml").should_not include('tim')
+      end
+
+      context "current user is set to changing alias" do
+        it 'sets the current alias to the new name' do
+          File.open(Dotman::Base.current_dotman, 'w') { |f| f.write('tim') }
+          Dotman::User.current_user_alias.should == 'tim'
+          Dotman::DotfileCollection.change_alias('tim', 'frank')
+          Dotman::User.current_user_alias.should == 'frank'
+        end
+      end
+
+      context "current user is not set to changing alias" do
+        it 'does not set the current alias to the new name' do
+          File.open(Dotman::Base.current_dotman, 'w') { |f| f.write('default') }
+          Dotman::User.current_user_alias.should == 'default'
+          Dotman::DotfileCollection.change_alias('tim', 'frank')
+          Dotman::User.current_user_alias.should == 'default'
+        end
+      end
+    end
+  end
 end
