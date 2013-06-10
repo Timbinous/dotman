@@ -1,14 +1,16 @@
 # Dotman
 
-This is a work in progress.
+This gem allows you to switch between different dotfiles on the same user account.
 
-This gem will allow you to switch between different dotfiles on the same user account.
+## Requirements
+
+ruby 1.9.3, 2.0
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Download this repository:
 
-    gem 'dotman'
+    git clone git@github.com:Timbinous/dotfiles.git
 
 And then execute:
 
@@ -17,6 +19,7 @@ And then execute:
 Or install it yourself as:
 
     $ gem install dotman
+
 ## Usage
 
 To retrieve your dotfiles and store them:
@@ -31,11 +34,11 @@ To list currently downloaded dotfiles:
 
     dot alias list
 
-or
+or simply just
 
     dot list 
 
-To revert dotfiles back to original:
+To revert dotfiles back to original state:
 
     dot use default 
 
