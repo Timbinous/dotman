@@ -20,5 +20,6 @@ RSpec.configure do |config|
     FileUtils.rm(File.join(ENV['HOME'], '.vim')) if File.symlink? (File.join(ENV['HOME'], '.vim'))
     FileUtils.rm(File.join(ENV['HOME'], '.vimrc')) if File.symlink? (File.join(ENV['HOME'], '.vimrc'))
     FileUtils.rm(File.join(ENV['HOME'], '.zshrc')) if File.symlink? (File.join(ENV['HOME'], '.zshrc'))
+    FileUtils.rm(File.join(ENV['HOME'], 'tim.zsh-theme')) if File.symlink? (File.join(ENV['HOME'], 'tim.zsh-theme'))
   end
 end
