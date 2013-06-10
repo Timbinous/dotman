@@ -15,7 +15,7 @@ when 'collect'
 when 'list'
   Dotman::DotfileCollection.show_all_aliases
 when 'alias'
-  if ARGV[1] == 'change'
+  if ARGV[1] == 'rename'
     Dotman::DotfileCollection.change_alias(ARGV[2], ARGV[3])
   elsif ARGV[1] == 'list'
     Dotman::DotfileCollection.show_all_aliases
@@ -27,6 +27,6 @@ else
     dot list : lists all downloaded dotfile aliases\n
     dot use default : switch to the default dot files\n
     dot collect : collects all dot files within a directory called dotfiles\n
-    dot alias change <old alias> <new alias> : changes alias from old to new\n
+    dot alias rename <old alias> <new alias> : changes alias from old to new\n
     dot alias list : same as dot list"
 end

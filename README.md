@@ -38,6 +38,10 @@ or simply just
 
     dot list 
 
+To change the alias name:
+
+    dot alias rename <old alias name> <new alias name> 
+
 To revert dotfiles back to original state:
 
     dot use default 
@@ -45,11 +49,6 @@ To revert dotfiles back to original state:
 To create a new dotfiles directory with all current dotfiles located in the HOME directory:
 
     dot collect
-
-To change the alias name:
-
-    dot alias change <old alias> <new alias> 
-
 
 ## Contributing
 
