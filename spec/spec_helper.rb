@@ -14,6 +14,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     FileUtils.rm_rf(File.join(ENV['HOME'], '.dotman')) if File.directory? (File.join(ENV['HOME'], '.dotman'))
+    FileUtils.rm_rf(File.join(ENV['HOME'], 'dotfiles')) if File.directory? (File.join(ENV['HOME'], 'dotfiles'))
     FileUtils.rm(File.join(ENV['HOME'], '.bashrc')) if File.symlink? (File.join(ENV['HOME'], '.bashrc'))
     FileUtils.rm(File.join(ENV['HOME'], '.gitignore')) if File.symlink? (File.join(ENV['HOME'], '.gitignore'))
     FileUtils.rm(File.join(ENV['HOME'], '.tmux.conf')) if File.symlink? (File.join(ENV['HOME'], '.tmux.conf'))
