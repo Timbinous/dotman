@@ -20,7 +20,7 @@ module Dotman
     def copy_over_dot file
       if !File.directory?("#{ENV['HOME']}/#{file}")
         FileUtils.copy "#{ENV['HOME']}/#{file}", "#{ENV['HOME']}/dotfiles"  
-        Dotman::Notification.copied_to_dotfiles(file)
+        Dotman::Notification.copying_to_dotfiles(file)
       end
     end
   end

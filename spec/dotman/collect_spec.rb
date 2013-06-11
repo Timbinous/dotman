@@ -36,7 +36,7 @@ describe Dotman::Collect do
 
     it 'should print collecting for script status' do
       collect.stub(:copy_over_dot)
-      collect.should_receive(:puts).with('collecting...')
+      Dotman::Notification.should_receive(:collecting)
       collect.collect_dotfiles
     end
   end
@@ -49,7 +49,7 @@ describe Dotman::Collect do
     end
 
     it 'should print out file being copied for user' do
-      collect.should_receive(:puts).with("copying #{File.join(ENV['HOME'], '.dotman')} to dotfiles")
+      Dotman::Notification.should_receive(:copying_to_dotfiles).with("#{File.join(ENV['HOME'], '.dotman')}")
       FileUtils.stub(:copy)
       collect.copy_over_dot(File.join(ENV['HOME'], '.dotman'))
     end

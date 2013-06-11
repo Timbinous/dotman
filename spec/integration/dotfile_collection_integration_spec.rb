@@ -28,7 +28,7 @@ describe Dotman::DotfileCollection do
     context "when aliases exist in the collection" do
       it "shows all the aliases" do
         STDOUT.should_receive(:puts).with("default\ntim")
-        Dotman::DotfileCollection.show_all_aliases
+        Dotman::Notification.display_all_aliases
       end
     end
   end
