@@ -1,7 +1,10 @@
 require 'spec_helper'
 describe Dotman::DotfileCollection do
   before :each do
+    Dotman::Base.ensure_dotman_folder_exists
     Dotman::Git.clone_repository('git@github.com:Timbinous/dotfiles.git', 'tim')
+    # Dotman::Base.ensure_default_folder_exists
+    # Dotman::Base.ensure_current_dotman_file_exists
   end
 
   describe ".find_by_alias" do
