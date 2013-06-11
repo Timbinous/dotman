@@ -22,14 +22,11 @@ RSpec.configure do |config|
 
   config.include FakeFS::SpecHelpers
 
-  config.before(:all) do
-  end
-
   config.before(:each) do
     create_home_directory
     create_timbinous_dotfiles
     Dotman::Git.stub(:system) do |arg|
-      if arg == "git clone git@github.com:Timbinous/dotfiles.git /home/tim/source/dotman/spec/data/home/.dotman/Timbinous_dotfiles"
+      if arg == "git clone git@github.com:Timbinous/dotfiles.git #{ENV['HOME']}/.dotman/Timbinous_dotfiles"
         FileUtils.cp_r(File.expand_path('../data/Timbinous_dotfiles', __FILE__), File.join(ENV['HOME'], '.dotman'))
       end
     end
