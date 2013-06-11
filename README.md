@@ -3,7 +3,7 @@ This gem allows you to switch between different dotfiles on the same user accoun
 
 ## Requirements
 
-ruby 1.9.3, 2.0
+ruby 1.9, 2.0
 
 ## Installation
 
