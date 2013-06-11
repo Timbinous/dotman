@@ -32,10 +32,6 @@ DOTFILES_PATH = "#{ENV['HOME']}/.dotman/dotfiles.yml"
       dotfiles_yaml.collect {|dfy| dfy.first }
     end
 
-    def self.show_all_aliases
-      STDOUT.puts all_aliases.join("\n")
-    end
-
     def self.change_alias(old_alias, new_alias)
       dotfiles_yaml[new_alias] = dotfiles_yaml[old_alias]
       dotfiles_yaml.delete(old_alias)

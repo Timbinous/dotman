@@ -16,7 +16,7 @@ module Dotman
     def self.clone_repository(git_location, alias_name = nil)
       dotfile_location = "#{ENV['HOME']}/.dotman/#{folder_name(git_location)}"
       if (File.directory?(dotfile_location))
-        STDOUT.puts("Dotfiles were already cloned")
+        Dotman::Notification.already_cloned
       else
         system "git clone #{git_location} #{dotfile_location}"
         Dotman::DotfileCollection.new_configuration(folder_name(git_location), alias_name)

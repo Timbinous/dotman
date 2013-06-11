@@ -13,7 +13,7 @@ when 'use'
 when 'collect'
   Dotman::Collect.new.create_dotman
 when 'list'
-  Dotman::DotfileCollection.show_all_aliases
+  Dotman::Notification.display_all_aliases
 when 'alias'
   if ARGV[1] == 'rename'
     Dotman::DotfileCollection.change_alias(ARGV[2], ARGV[3])
@@ -21,12 +21,5 @@ when 'alias'
     Dotman::DotfileCollection.show_all_aliases
   end
 else
-  puts "USAGE:\n
-    dot clone <git_repository> <alias> : clone the dotfiles repo\n
-    dot use <alias> : use the dotfiles\n
-    dot list : lists all downloaded dotfile aliases\n
-    dot use default : switch to the default dot files\n
-    dot collect : collects all dot files within a directory called dotfiles\n
-    dot alias rename <old alias> <new alias> : changes alias from old to new\n
-    dot alias list : same as dot list"
+  Dotman::Notification.show_help
 end
