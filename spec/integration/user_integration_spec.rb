@@ -3,7 +3,7 @@ describe Dotman::User do
   let (:tim)                 { Dotman::User.new('tim') }
 
   describe ".current_user_alias" do
-    before :all do
+    before :each do
       Dotman::Base.ensure_dotman_folder_exists
       File.open(Dotman::Base.current_dotman, 'w') { |f| f.write 'tim' }
     end
