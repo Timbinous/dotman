@@ -1,4 +1,4 @@
-# Dotman [![Build Status](https://secure.travis-ci.org/thoughtbot/dotman.png)](http://travis-ci.org/Timbinous/dotman?branch=master)
+# Dotman [![Build Status](https://secure.travis-ci.org/Timbinous/dotman.png)](http://travis-ci.org/Timbinous/dotman?branch=master)
 This gem allows you to switch between different dotfiles on the same user account.
 
 ## Requirements
