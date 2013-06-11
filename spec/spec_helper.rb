@@ -1,9 +1,11 @@
 ENV['HOME'] = File.expand_path('../data/home', __FILE__)
+require 'fakefs/spec_helpers'
 require 'fileutils'
 require_relative "../lib/dotman"
 
 RSpec.configure do |config|
 
+  config.include FakeFS::SpecHelpers
   config.before(:each) do
     Dotman::Git.stub(:system) do |arg|
       if arg == "git clone git@github.com:Timbinous/dotfiles.git /home/tim/source/dotman/spec/data/home/.dotman/Timbinous_dotfiles"
