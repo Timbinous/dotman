@@ -10,7 +10,6 @@ def create_timbinous_dotfiles
   timbinous_path = File.join(ENV['HOME'], '../', 'Timbinous_dotfiles')
   FileUtils.mkdir_p(timbinous_path) unless File.directory?(timbinous_path)
   FileUtils.mkdir_p(timbinous_path, '.vim')
-  FileUtils.touch(File.join(timbinous_path, '.vimrc'))
   FileUtils.touch(File.join(timbinous_path, '.bashrc'))
   FileUtils.touch(File.join(timbinous_path, '.tmux.conf'))
   FileUtils.touch(File.join(timbinous_path, '.vimrc'))
