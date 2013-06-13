@@ -1,6 +1,6 @@
 ENV['HOME'] = File.expand_path('../data/home', __FILE__)
 require 'fakefs/spec_helpers'
-require_relative "../lib/dotman"
+require File.expand_path("../../lib/dotman", __FILE__)
 
 def create_home_directory
   FileUtils.mkdir_p(ENV['HOME']) unless File.directory?(ENV['HOME'])
