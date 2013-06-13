@@ -1,14 +1,15 @@
-# Dotman
+# Dotman [![Build Status](https://secure.travis-ci.org/Timbinous/dotman.png)](http://travis-ci.org/Timbinous/dotman?branch=master)
+This gem allows you to switch between different dotfiles on the same user account.
 
-This is a work in progress.
+## Requirements
 
-This gem will allows you to switch between different dotfiles on the same user account.
+ruby 1.9, 2.0
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Download this repository:
 
-    gem 'dotman'
+    git clone git@github.com:Timbinous/dotfiles.git
 
 And then execute:
 
@@ -20,14 +21,33 @@ Or install it yourself as:
 
 ## Usage
 
-To retrieve your dotfiles and store them
-dot clone your\_dotfiles\_repo alias
+To retrieve your dotfiles and store them:
 
-To use cloned dotfiles
-dot use alias
+    dot clone <git repository> <alias>
 
-To revert dotfiles back to original
-dot use default
+To use cloned dotfiles:
+
+    dot use <alias> 
+
+To list currently downloaded dotfiles:
+
+    dot alias list
+
+or simply just
+
+    dot list 
+
+To change the alias name:
+
+    dot alias rename <old alias name> <new alias name> 
+
+To revert dotfiles back to original state:
+
+    dot use default 
+
+To create a new dotfiles directory with all current dotfiles located in the HOME directory:
+
+    dot collect
 
 ## Contributing
 

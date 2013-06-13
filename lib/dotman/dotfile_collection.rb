@@ -15,6 +15,8 @@ DOTFILES_PATH = "#{ENV['HOME']}/.dotman/dotfiles.yml"
         FileUtils.rm_rf(File.join(Dotman::Base.dotman_folder, dotfiles_yaml[alias_name]['folder_name']))
         dotfiles_yaml.delete(alias_name)
         save_dotfile_yaml
+      else
+        Dotman::Notification.dotfile_collection_not_found(alias_name)
       end
     end
 
@@ -34,7 +36,20 @@ DOTFILES_PATH = "#{ENV['HOME']}/.dotman/dotfiles.yml"
         })
       save_dotfile_yaml
     end
+    
+    def self.all_aliases
+      ensure_default_dotfile_configuration_exists
+      dotfiles_yaml.collect {|dfy| dfy.first }
+    end
 
+    def self.change_alias(old_alias, new_alias)
+      dotfiles_yaml[new_alias] = dotfiles_yaml[old_alias]
+      dotfiles_yaml.delete(old_alias)
+      if Dotman::User.current_user_alias == old_alias
+        Dotman::User.set_current_user(new_alias)
+      end
+      save_dotfile_yaml
+    end
 
     def all_dotfiles
       Dir.entries("#{Dotman::Base.dotman_folder}/#{@yaml['folder_name']}").select{|x| x =~ /\.{1}\w+[^git]/ }

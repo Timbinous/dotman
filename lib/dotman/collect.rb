@@ -9,7 +9,7 @@ module Dotman
     end
 
     def collect_dotfiles
-      puts "collecting..."
+      Dotman::Notification.collecting
       Dir.entries("#{ENV['HOME']}").each do |file|
         if file =~ /^.{1}[a-zA-Z1-9]+\z/
           copy_over_dot file
@@ -19,8 +19,8 @@ module Dotman
 
     def copy_over_dot file
       if !File.directory?("#{ENV['HOME']}/#{file}")
-        puts "copying #{file} to dotfiles"
         FileUtils.copy "#{ENV['HOME']}/#{file}", "#{ENV['HOME']}/dotfiles"  
+        Dotman::Notification.copying_to_dotfiles(file)
       end
     end
   end

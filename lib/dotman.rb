@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'yaml'
 require "dotman/version"
 require "dotman/base"
 Dotman::Base.ensure_dotman_folder_exists
@@ -8,3 +9,4 @@ require "dotman/git"
 require "dotman/dotfile_collection"
 require "dotman/user"
 require "dotman/collect"
+require "dotman/notification"

@@ -4,6 +4,11 @@ describe Dotman::Collect do
 
   let(:collect) { Dotman::Collect.new }
 
+  before :each do
+    Dotman::Notification.stub(:collecting)
+    Dotman::Notification.stub(:copying_to_dotfiles)
+  end
+
   context '#create_dotman' do
 
     it 'should check for dotfiles directory and not create if exists' do
@@ -12,7 +17,7 @@ describe Dotman::Collect do
       collect.create_dotman
     end
     
-    xit 'should check for dotfiles directory and create if does not exist' do
+    it 'should check for dotfiles directory and create if does not exist' do
       File.stub(:directory?).and_return(false)
       FileUtils.should_receive(:mkdir)
       collect.create_dotman
@@ -36,7 +41,7 @@ describe Dotman::Collect do
 
     it 'should print collecting for script status' do
       collect.stub(:copy_over_dot)
-      collect.should_receive(:puts).with('collecting...')
+      Dotman::Notification.should_receive(:collecting)
       collect.collect_dotfiles
     end
   end
@@ -49,7 +54,7 @@ describe Dotman::Collect do
     end
 
     it 'should print out file being copied for user' do
-      collect.should_receive(:puts).with("copying #{File.join(ENV['HOME'], '.dotman')} to dotfiles")
+      Dotman::Notification.should_receive(:copying_to_dotfiles).with("#{File.join(ENV['HOME'], '.dotman')}")
       FileUtils.stub(:copy)
       collect.copy_over_dot(File.join(ENV['HOME'], '.dotman'))
     end
