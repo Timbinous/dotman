@@ -6,6 +6,7 @@ module Dotman
       dot use <alias> : use the dotfiles
       dot list : lists all downloaded dotfile aliases
       dot use default : switch to the default dot files
+      dot delete <alias> : delete dotfile collection
       dot collect : collects all dot files within a directory called dotfiles
       dot alias rename <old alias> <new alias> : changes alias from old to new
       dot alias list : same as dot list"
