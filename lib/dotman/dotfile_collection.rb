@@ -10,6 +10,14 @@ DOTFILES_PATH = "#{ENV['HOME']}/.dotman/dotfiles.yml"
 
     attr_accessor :yaml
 
+    def self.delete(alias_name)
+      if dotfiles_yaml[alias_name] && dotfiles_yaml[alias_name]['folder_name']
+        FileUtils.rm_rf(File.join(Dotman::Base.dotman_folder, dotfiles_yaml[alias_name]['folder_name']))
+        dotfiles_yaml.delete(alias_name)
+        save_dotfile_yaml
+      end
+    end
+
     def self.dotfiles_yaml
       @dotfiles_yaml ||= File.exist?(DOTFILES_PATH) ? YAML::load_file(DOTFILES_PATH) : Hash.new
     end
