@@ -1,5 +1,0 @@
-*.swp
-*.swo
-.vim/.netrwhist
-.vim/bundle/*
-!.vim/bundle/.gitkeep

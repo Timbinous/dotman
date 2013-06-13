@@ -45,6 +45,10 @@ To revert dotfiles back to original state:
 
     dot use default 
 
+To delete dotfiles collection:
+
+    dot delete <alias> 
+
 To create a new dotfiles directory with all current dotfiles located in the HOME directory:
 
     dot collect
