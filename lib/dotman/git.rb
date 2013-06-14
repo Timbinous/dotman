@@ -10,11 +10,16 @@ module Dotman
     end
 
     def self.folder_name(git_location)
-      folder_name = git_location.scan(/[^:]+[\/]?dotfile[s?]{1}/).first.gsub('/', '_')
+      folder_name = git_location.scan(/[^:]+[\/]{1}[a-zA-Z0-9]+/).first.gsub('/', '_')
     end
 
     def self.clone_repository(git_location, alias_name = nil)
-      dotfile_location = "#{ENV['HOME']}/.dotman/#{folder_name(git_location)}"
+      if git_location && !git_location.strip.empty?
+        dotfile_location = "#{ENV['HOME']}/.dotman/#{folder_name(git_location)}"
+      else
+        return Dotman::Notification.unspecified_git_path
+      end
+
       if (File.directory?(dotfile_location))
         Dotman::Notification.already_cloned
       else
