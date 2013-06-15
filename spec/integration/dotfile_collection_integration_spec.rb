@@ -17,6 +17,13 @@ describe Dotman::DotfileCollection do
         File.directory?(File.join(Dotman::Base.dotman_folder, 'Timbinous_dotfiles')).should be_true
       end
     end
+
+    context "when dotfile collection is not found" do
+      it "shows the message that the dotfile wasn't found" do
+        Dotman::Notification.should_receive(:dotfile_collection_not_found).with('zach')
+        Dotman::DotfileCollection.find_by_alias('zach')
+      end
+    end
   end
 
   describe ".delete" do
