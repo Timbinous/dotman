@@ -26,7 +26,11 @@ DOTFILES_PATH = "#{ENV['HOME']}/.dotman/dotfiles.yml"
 
     def self.find_by_alias(alias_name)
       ensure_default_dotfile_configuration_exists
-      new(dotfiles_yaml.fetch(alias_name))
+      if found = dotfiles_yaml[alias_name]
+        new(found)
+      else
+        Dotman::Notification.dotfile_collection_not_found(alias_name)
+      end
     end
 
     def self.new_configuration(folder_name, alias_name = nil)
