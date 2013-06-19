@@ -17,6 +17,10 @@ def create_timbinous_dotfiles
   FileUtils.touch(File.join(timbinous_path, '.tim.zsh-theme'))
 end
 
+def timbinous_dotfiles
+  "#{ENV['HOME']}/.dotman/Timbinous_dotfiles"
+end
+
 RSpec.configure do |config|
 
   config.include FakeFS::SpecHelpers
