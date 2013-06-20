@@ -25,7 +25,7 @@ module Dotman
       else
         system "git clone #{git_location} #{dotfile_location}"
         Dotman::DotfileCollection.new_configuration(folder_name(git_location), alias_name)
-        Dotman::AfterClone.run(File.join(Dotman::Base.dotman_folder, dotfile_location))
+        Dotman::AfterClone.run(dotfile_location)
       end
     end
   end
