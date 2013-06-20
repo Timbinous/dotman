@@ -53,6 +53,11 @@ To create a new dotfiles directory with all current dotfiles located in the HOME
 
     dot collect
 
+### After Clone Hook
+
+If you would like to execute a script after cloning down your dotfiles;
+Add the script as an executable file named `.dotman.after_clone` in the root of your dotfiles
+
 ## Contributing
 
 1. Fork it
