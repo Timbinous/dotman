@@ -12,6 +12,8 @@ when 'use'
   Dotman::User.set(ARGV[1])
 when 'collect'
   Dotman::Collect.new.create_dotman
+when 'current'
+  Dotman::Notification.display_current_user
 when 'list'
   Dotman::Notification.display_all_aliases
 when 'delete'

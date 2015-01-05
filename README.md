@@ -53,6 +53,10 @@ To create a new dotfiles directory with all current dotfiles located in the HOME
 
     dot collect
 
+To show the current user set for your dotfiles:
+
+    dot current
+
 ### After Clone Hook
 
 If you would like to execute a script after cloning down your dotfiles...

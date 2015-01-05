@@ -9,7 +9,8 @@ module Dotman
       dot delete <alias> : delete dotfile collection
       dot collect : collects all dot files within a directory called dotfiles
       dot alias rename <old alias> <new alias> : changes alias from old to new
-      dot alias list : same as dot list"
+      dot alias list : same as dot list
+      dot current: shows the current dotfile user"
     end
 
     def self.already_cloned
@@ -30,6 +31,10 @@ module Dotman
 
     def self.dotfile_collection_not_found(alias_name)
       STDOUT.puts "Dotfile collection not found for #{alias_name}"
+    end
+
+    def self.display_current_user
+      STDOUT.puts Dotman::User.current_user_alias
     end
   end
 end
